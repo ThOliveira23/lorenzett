@@ -85,6 +85,6 @@ RUN CPU_N=$(grep -c ^processor /proc/cpuinfo) && cd /opt && curl -O http://fastj
 RUN pip3 install gaugi future
 
 # Install Lorenzett
-RUN mkdir /code && cd /code && git clone https://github.com/jodafons/lorenzett.git && cd lorenzett && source setup_module.sh && source setup_module.sh --head
+RUN mkdir /code && cd /code && git clone https://github.com/ThOliveira23/lorenzett.git && cd lorenzett && source setup_module.sh && source setup_module.sh --head
 COPY setup_envs.sh /
 RUN chmod 777 /setup_envs.sh

@@ -23,7 +23,6 @@
 #include <string>
 #include <sstream>
 
-//aloha
 
 G4ThreadLocal
 G4GlobalMagFieldMessenger* DetectorATLASConstruction::m_magFieldMessenger = 0;
