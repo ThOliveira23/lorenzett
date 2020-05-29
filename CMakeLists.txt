@@ -70,7 +70,6 @@ add_subdirectory( reconstruction/CaloRec )
 add_subdirectory( reconstruction/CaloRingerBuilder )
 add_subdirectory( generator/PythiaGenerator )
 add_subdirectory( geometry/DetectorATLASModel )
-add_subdirectory( geometry/Detector_new )
 
 add_library(lorenzett SHARED
   $<TARGET_OBJECTS:GaugiKernel>
