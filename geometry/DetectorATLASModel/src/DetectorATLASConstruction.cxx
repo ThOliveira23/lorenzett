@@ -87,7 +87,6 @@ void DetectorATLASConstruction::DefineMaterials()
 
   // Stainless Steel
   G4Material* StainlessSteel = new G4Material(name="StainlessSteel",8.96 * g/cm3, 1);
-  StainlessSteel->AddElement(elO, fractionmass = 1.);
 
 
   // Print materials
