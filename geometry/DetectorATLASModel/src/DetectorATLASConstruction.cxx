@@ -85,6 +85,11 @@ void DetectorATLASConstruction::DefineMaterials()
   // Vacuum
   new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
+  // Stainless Steel
+  G4Material* StainlessSteel = new G4Material(name="StainlessSteel",8.96 * g/cm3, 1);
+  StainlessSteel->AddElement(elO, fractionmass = 1.);
+
+
   // Print materials
   G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 }
