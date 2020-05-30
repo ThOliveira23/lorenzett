@@ -65,6 +65,11 @@ void DetectorATLASConstruction::DefineMaterials()
   G4Element* elC = new G4Element("Carbon", "C", 6., 12.011 * g/mole);
 
   G4Element* elMn = new G4Element("Manganese","Mn", 25., 54.94*g/mole);
+  G4Element* elSi = new G4Element("Silicon","Si", 14., 28.09*g/mole);
+  G4Element* elCr = new G4Element("Chromium","Cr", 24., 52.00*g/mole);
+  G4Element* elNi = new G4Element("Nickel","Ni", 28., 58.70*g/mole);
+  G4Element* elFe = new G4Element("Iron","Fe", 26., 55.85*g/mole);
+
     
     
     
@@ -90,8 +95,13 @@ void DetectorATLASConstruction::DefineMaterials()
   new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
   // Stainless Steel
-  new G4Material("StainlessSteel", z=65, a = 100*g/mole,density = 8.96*g/cm3);
-  //G4Material* StainlessSteel = new G4Material("StainlessSteel",8.96 * g/cm3, 1);
+  d = 8.02*g/cm3 ;
+  steel = new G4Material("Stainless Steel",d,5);
+  steel->AddElement(elMn, 0.02);
+  steel->AddElement(elSi, 0.01);
+  steel->AddElement(elCr, 0.19);
+  steel->AddElement(elNi, 0.10);
+  steel->AddElement(elFe, 0.68);
 
 
   // Print materials
