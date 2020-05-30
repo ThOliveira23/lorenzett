@@ -95,7 +95,7 @@ void DetectorATLASConstruction::DefineMaterials()
   new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
   // Stainless Steel
-  steel = new G4Material("Stainless Steel",8.02*g/cm3,5);
+  G4Material* steel = new G4Material("Stainless Steel", 8.02 * g/cm3, 5); // Organic plastic
   steel->AddElement(elMn, 0.02);
   //steel->AddElement(elSi, 0.01);
   //steel->AddElement(elCr, 0.19);
