@@ -96,7 +96,7 @@ void DetectorATLASConstruction::DefineMaterials()
 
   // Stainless Steel
   d = 8.02*g/cm3 ;
-  steel = new G4Material("Stainless Steel",d,5);
+  steel = new G4Material("Stainless Steel",8.02*g/cm3,5);
   steel->AddElement(elMn, 0.02);
   steel->AddElement(elSi, 0.01);
   steel->AddElement(elCr, 0.19);
