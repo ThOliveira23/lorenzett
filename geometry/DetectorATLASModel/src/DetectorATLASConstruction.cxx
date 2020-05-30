@@ -64,6 +64,10 @@ void DetectorATLASConstruction::DefineMaterials()
   G4Element* elH = new G4Element("Hydrogen", "H", 1., 1.0079 * g/mole);
   G4Element* elC = new G4Element("Carbon", "C", 6., 12.011 * g/mole);
 
+  G4Element* = elMn = new G4Element("Manganese","Mn",Z = 25.,A = 54.94*g/mole);
+    
+    
+    
   //density = 1.032*g/cm3;
   //G4Material* scinti = new G4Material(name="PLASTIC SCINTILLATOR", density, nel=2);
   //scinti->AddElement(elC, 9);
