@@ -252,7 +252,7 @@ G4VPhysicalVolume* DetectorATLASConstruction::DefineVolumes()
                 G4ThreeVector(0,0,0),
                 deadMaterialBeforeHCal );
 
-
+ // New Regions
   G4Region* had1 = new G4Region("HAD1");
   G4Region* had2 = new G4Region("HAD2");
   G4Region* had3 = new G4Region("HAD3");
