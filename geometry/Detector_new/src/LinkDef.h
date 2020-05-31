@@ -1,5 +1,5 @@
 
-#include "src/DetectorATLASConstruction.h"
+#include "src/DetectorGenericConstruction.h"
 
 #ifdef __CINT__
 
@@ -9,6 +9,6 @@
 #pragma link C++ nestedclass;
 
 
-#pragma link C++ class DetectorATLASConstruction+;
+#pragma link C++ class DetectorGenericConstruction+;
 
 #endif
