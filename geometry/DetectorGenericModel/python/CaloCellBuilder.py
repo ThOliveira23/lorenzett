@@ -75,7 +75,7 @@ class CaloCellBuilder( Logger ):
 
             
 
-  __basepath = os.environ['LZT_PATH']+'/geometry/DetectorATLASModel/data/'
+  __basepath = os.environ['LZT_PATH']+'/geometry/DetectorGenericModel/data/'
 
 
   def __init__( self, name, HistogramPath = "Expert", OutputLevel=1):
