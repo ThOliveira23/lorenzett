@@ -1,5 +1,5 @@
-#ifndef DetectorATLASConstruction_h
-#define DetectorATLASConstruction_h
+#ifndef DetectorGenericConstruction_h
+#define DetectorGenericConstruction_h
 
 #include "GaugiKernel/MsgStream.h"
 #include "G4VUserDetectorConstruction.hh"
@@ -13,11 +13,11 @@ class G4VPhysicalVolume;
 class G4GlobalMagFieldMessenger;
 
 
-class DetectorATLASConstruction : public G4VUserDetectorConstruction, public MsgService
+class DetectorGenericConstruction : public G4VUserDetectorConstruction, public MsgService
 {
   public:
-    DetectorATLASConstruction(std::string);
-    virtual ~DetectorATLASConstruction();
+    DetectorGenericConstruction(std::string);
+    virtual ~DetectorGenericConstruction();
     virtual G4VPhysicalVolume* Construct();
     virtual void ConstructSDandField();
 
