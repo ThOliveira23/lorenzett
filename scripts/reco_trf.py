@@ -54,13 +54,16 @@ for thread in range( args.numberOfThreads ):
 
 
 
-from DetectorATLASModel import DetectorConstruction as ATLAS
-from DetectorATLASModel import CaloCellBuilder
+#from DetectorATLASModel import DetectorConstruction as ATLAS
+#from DetectorATLASModel import CaloCellBuilder
+
+from DetectorGenericModel import DetectorConstruction as Generic
+from DetectorGenericModel import CaloCellBuilder
 
 
 
 acc = ComponentAccumulator("ComponentAccumulator",
-                            ATLAS("GenericATLASDetector"),
+                            Generic("GenericDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
