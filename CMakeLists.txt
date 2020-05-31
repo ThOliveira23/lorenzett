@@ -85,7 +85,7 @@ add_library(lorenzett SHARED
   $<TARGET_OBJECTS:CaloRingerBuilder>
   $<TARGET_OBJECTS:PythiaGenerator>
   $<TARGET_OBJECTS:DetectorATLASModel>
-  #$<TARGET_OBJECTS:Detector_new>
+  $<TARGET_OBJECTS:DetectorGenericModel>
 )
 
 message( STATUS ${FASTJET_LIBRARIES} )
