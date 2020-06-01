@@ -125,5 +125,24 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
                    0,                 // copy number
                    m_checkOverlaps);  // checking overlaps
     
+   
+    // Create a region
+    G4Region* deadMatBeforeCal = new G4Region("DeadMatBeforeECal");
+    
+    // Creating the Barrel
+    CreateBarrel( worldLV,
+                  "DeadMaterial",
+                  G4Material::GetMaterial("Galactic"),  // default material
+                  G4Material::GetMaterial("G4_Al"),     // default absorber
+                  G4Material::GetMaterial("Galactic"),  // gap material
+                  2,                                    // ATLAS-like
+                  7.7*cm,                               // absorber thickness
+                  10*cm,                                // gap thickness
+                  110.*cm,                              // start radius
+                  6.8*m,                                // Z
+                  G4ThreeVector(0,0,0),
+                  deadMatBeforeCal );
+    
+    
     
 }
