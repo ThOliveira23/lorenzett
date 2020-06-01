@@ -398,8 +398,109 @@ void DetectorScintiConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
     
     G4double layerThickness = absoThickness + gapThickness;
     
+    G4VSolid* calorimeterS = new G4Tubs( name,                                  // its name
+                                         calorRmin,                             // R min 1700mm
+                                         calorRmin + nofLayers*layerThickness,  // R max 48cm+1700mm
+                                         calorZ/2,                              // Z max, +250cm
+                                         0*deg,                                 // phi min
+                                         360*deg );                             // phi max
+    
+    G4LogicalVolume* calorLV = new G4LogicalVolume( calorimeterS,      // its solid
+                                                    defaultMaterial,   // its material
+                                                    name );            // its name
+    
+    new G4PVPlacement(0,                   // no rotation
+                      center_pos,          // at (0,0,0)
+                      calorLV,             // its logical volume
+                      name,                // its name
+                      worldLV,             // its mother volume
+                      false,               // no boolen operation
+                      0,                   // copy number
+                      m_checkOverlaps);    // checking overlaps
+    
+    region->AddRootLogicalVolume(calorLV);
     
     
+    // Loop over the calorimeter layers
+    for (G4int layer=0; layer < nofLayers; ++layer) {
+    
+        G4VSolid* layerS = new G4Tubs(name+"_Layer",                         // its name
+                                      calorRmin + layer*layerThickness,      // R min 1700mm
+                                      calorRmin + (layer+1)*layerThickness,  // R max 48cm + 1700mm
+                                      calorZ/2                               // Z max, +250 cm
+                                      0*deg,                                 // phi min
+                                      360*deg );                             // phi max
+        
+        G4LogicalVolume* layerLV = new G4LogicalVolume( layerS,                       // its solid
+                                                        defaultMaterial,              // its material
+                                                        name+"_Layer");               // its name
+        
+        new G4PVPlacement(
+                     0,                    // no rotation
+                     G4ThreeVector(0,0,0),
+                     //center_pos,        // at (0,0,0)
+                     layerLV,             // its logical volume
+                     name+"_Layer",       // its name
+                     calorLV,             // its mother  volume
+                     false,               // no boolean operation
+                     0,                   // copy number
+                     m_checkOverlaps);    // checking overlaps
+        
+        G4VSolid* absorverS = new G4Tubs( name+"_Abso",
+                                    calorRmin + layer*(absoThickness + gapThickness),                  // R min 1700mm
+                                    calorRmin + layer*(absoThickness + gapThickness) + absoThickness,  // R max 48cm + 1700mm
+                                                calorZ/2                                               // Z max, +250 cm
+                                                0*deg,                                                 // phi min
+                                                360*deg );                                             // phi max
+        
+        
+        G4LogicalVolume* absorverLV = new G4LogicalVolume( absorverS,                       // its solid
+                                                           absorberMaterial,                // its material
+                                                           name+"_Abso");                   // its name
+        
+        
+        new G4PVPlacement(
+                          0,                    // no rotation
+                          G4ThreeVector(0,0,0),
+                          //center_pos,        // at (0,0,0)
+                          absorverLV,          // its logical volume
+                          name+"_Abso",        // its name
+                          layerLV,             // its mother  volume
+                          false,               // no boolean operation
+                          0,                   // copy number
+                          m_checkOverlaps);    // checking overlaps
+        
+        
+        G4VSolid* gapS = new G4Tubs( name+"_Gap",                                                           // its name
+                                        calorRmin + layer*(absoThickness + gapThickness) + absoThickness,   // R max 48cm+1700mm
+                                        calorRmin + (layer+1)*(absoThickness + gapThickness),               // R max 48cm+1700mm
+                                        calorZ/2,                                                           // Z max, +250cm
+                                        0*deg,                                                              // phi_min
+                                        360*deg );                                                          // phi_max
+
+           G4LogicalVolume* gapLV = new G4LogicalVolume(
+                                                         gapS,                 // its solid
+                                                         gapMaterial,          // its material
+                                                         name+"_Gap");         // its name
+
+
+           new G4PVPlacement(
+                        0,                   // no rotation
+                        G4ThreeVector(0,0,0),
+                        //center_pos,        // at (0,0,0)
+                        gapLV,               // its logical volume
+                        name+"_Gap",         // its name
+                        calorLV,             // its mother  volume
+                        false,               // no boolean operation
+                        0,                   // copy number
+                        m_checkOverlaps);    // checking overlaps
+
+
+                                       
+    } // End of the loop over the calorimeter layers
+    
+    
+
   
     
 }
