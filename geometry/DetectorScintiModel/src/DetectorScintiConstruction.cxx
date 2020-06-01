@@ -373,8 +373,33 @@ void DetectorScintiConstruction::ConstructSDandField()
     
 }
     
+
+void DetectorGenericConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
+                                                 std::string name,
+                                                 G4Material *defaultMaterial,
+                                                 G4Material *absorberMaterial,
+                                                 G4Material *gapMaterial,
+                                                 int nofLayers,
+                                                 double absoThickness,
+                                                 double gapThickness,
+                                                 double calorRmin,
+                                                 double calorZ,
+                                                 G4ThreeVector center_pos,
+                                                 G4Region *region
+                                               )
+
+{
+ 
+    if (! defaultMaterial || ! absorberMaterial || ! gapMaterial) {
+        G4ExceptionDescription msg;
+        msg << "Can't retrieve materials already defined.";
+        G4Exception("DetectorScintiConstruction::DefineVolumes()", "MyCode0001", FatalException, msg);
+}
+    
+    G4double layerThickness = absoThickness + gapThickness;
+    
     
     
   
     
-
+}
