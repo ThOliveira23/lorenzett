@@ -37,7 +37,7 @@ DetectorScintiConstruction::DetectorScintiConstruction(std::string name)
 DetectorScintiConstruction::~DetectorScintiConstruction()
 {;}
 
-G4PhysicalVolume* DetectorScintiConstruction::Construct()
+G4VPhysicalVolume* DetectorScintiConstruction::Construct()
 {
     // Define materials
     DefineMaterials();
@@ -92,7 +92,7 @@ void DetectorScintiConstruction::DefineMaterials()
     new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
     
     // Print Materials
-    G4Cout << *(G4Material::GetMaterialTable()) << G4endl;
+    G4cout << *(G4Material::GetMaterialTable()) << G4endl;
     
     
     
