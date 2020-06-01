@@ -22,8 +22,8 @@ class DetectorScintiConstruction : public G4VUserDetectorConstruction, public Ms
 // Construct and place volumes of your detector geometry
 
   public:
-    DetectorScintiConstruction(std::string); // constructor
-    virtual ~DetectorScintiConstruction();   // destructor
+    DetectorScintiConstruction(std::string);
+    virtual ~DetectorScintiConstruction();   
     virtual G4PhysicalVolume* Construct();
     virtual void ConstructSDandField();
     
