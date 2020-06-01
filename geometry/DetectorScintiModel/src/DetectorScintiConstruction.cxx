@@ -23,7 +23,7 @@
 #include <sstream>
 
 G4ThreadLocal
-G4GlobalMagFieldMessenger* DetectorScintiConstruction::m:magFieldMessenger = 0;
+G4GlobalMagFieldMessenger* DetectorScintiConstruction::m_magFieldMessenger = 0;
 
 DetectorScintiConstruction::DetectorScintiConstruction(std::string name)
   :

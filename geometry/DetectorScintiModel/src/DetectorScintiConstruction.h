@@ -10,7 +10,7 @@
 
 // Class definitions
 // The physical volume can be translated or rotated and the logical volume carries the volume itself
-class G4PhysicalVolume;
+class G4VPhysicalVolume;
 class G4GlobalMagFieldMessenger;
 
 // Derive your own concrete class from the G4VUserDetectorConstruction abstract base class
