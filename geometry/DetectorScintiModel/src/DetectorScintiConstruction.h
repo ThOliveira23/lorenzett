@@ -36,7 +36,7 @@ class DetectorScintiConstruction : public G4VUserDetectorConstruction, public Ms
     // Methods
     void DefineMaterials();
     
-    G4PhysicalVolume* DefineVolumes();
+    G4VPhysicalVolume* DefineVolumes();
     
     // Creating the regions of the detector
     void CreateBarrel( G4LogicalVolume *worldLV,
