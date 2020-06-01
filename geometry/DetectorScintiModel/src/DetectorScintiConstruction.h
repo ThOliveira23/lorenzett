@@ -23,13 +23,13 @@ class DetectorScintiConstruction : public G4VUserDetectorConstruction, public Ms
 
   public:
     DetectorScintiConstruction(std::string);
-    virtual ~DetectorScintiConstruction();   
+    virtual ~DetectorScintiConstruction();
     virtual G4PhysicalVolume* Construct();
     virtual void ConstructSDandField();
     
     // Get methods
     const G4PhysicalVolume* GetAbsorberPV() const;
-    const G4PhysicalVolume* GetGapPV();
+    const G4PhysicalVolume* GetGapPV() const;
     
   private:
     
