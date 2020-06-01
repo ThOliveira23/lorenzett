@@ -126,8 +126,17 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
                    m_checkOverlaps);  // checking overlaps
     
    
-    // Create a region
+    // Creating the calorimeter regions
     G4Region* deadMatBeforeCal = new G4Region("DeadMatBeforeECal");
+    G4Region* presampler = new G4Region("PS");
+    G4Region* em1 = new G4Region("EM1");
+    G4Region* em2 = new G4Region("EM2");
+    G4Region* em3 = new G4Region("EM3");
+    G4Region* deadMatBeforeHCal = new G4Region("DeadMatBeforeHCal");
+    G4Region* had1 = new G4Region("HAD1");
+    G4Region* had2 = new G4Region("HAD2");
+    G4Region* had3 = new G4Region("HAD3");
+    
     
     // Creating the Barrel
     CreateBarrel( worldLV,
@@ -145,20 +154,87 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
     
     
     // Creating the Pre-Sampler Calorimeter
-    G4Region* presampler = new G4Region("PS");
-    
     CreateBarrel( worldLV,
                   "PS",
-                  G4Material::GetMaterial("Galactic"),      // default material
-                  G4Material::GetMaterial("Galactic"),      // default absorber
-                  G4Material::GetMaterial("liquidArgon"),   // gap material
-                  1,                                        // layers
-                  0.01*mm,                                  // absorber thickness
-                  1.1*cm,                                   // gap thickness
-                  146.*cm,                                 // start radius
-                  6.8*m,                                    // Z
+                  G4Material::GetMaterial("Galactic"),               // default material
+                  G4Material::GetMaterial("Galactic"),               // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),   // gap material
+                  1,                                                 // layers
+                  0.01*mm,                                           // absorber thickness
+                  1.1*cm,                                            // gap thickness
+                  146.*cm,                                           // start radius
+                  6.8*m,                                             // Z
                   G4ThreeVector(0,0,0),
                   presampler );
     
+    // Creating the barrel for the Electromagnetic Calorimeter
+    CreateBarrel( worldLV,
+                  "EM1",
+                  G4Material::GetMaterial("Galactic"),               // default material
+                  G4Material::GetMaterial("G4_Pb"),                  // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),   // gap material
+                  16,                                                // layers
+                  1.51*mm,                                           // absorber thickness
+                  4.49*mm,                                           // gap thickness
+                  150.*cm,                                           // start radius
+                  6.8*m,                                             // Z
+                  G4ThreeVector(0,0,0),
+                  em1 );
+    
+    CreateBarrel( worldLV,
+                  "EM2",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Pb"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  55,                                                 // layers
+                  1.7*mm,                                             // absorber thickness
+                  4.3*mm,                                             // gap thickness
+                  150.*cm + 9.6*cm,                                   // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  em2 );
+    
+    CreateBarrel( worldLV,
+                  "EM3",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Pb"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  9,                                                  // layers
+                  1.7*mm,                                             // absorber thickness
+                  4.3*mm,                                             // gap thickness
+                  150.*cm + 9.6*cm + 33*cm,                           // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  em3 );
+    
+    
+    CreateBarrel( worldLV,
+                  "ECal_Boundary",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Pb"),                   // default absorber
+                  G4Material::GetMaterial("Galactic"),                // gap material
+                  1,                                                  // layers
+                  10*cm,                                              // absorber thickness
+                  3*mm,                                               // gap thickness
+                  198.3*cm,                                           // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  deadMaterialBeforeHCal );
+    
+    CreateBarrel( worldLV,
+                     "HCal_Boundary",
+                     G4Material::GetMaterial("Galactic"),                // default material
+                     G4Material::GetMaterial("G4_Pb"),                   // default absorber
+                     G4Material::GetMaterial("Galactic"),                // gap material
+                     1,                                                  // layers
+                     10*cm,                                              // absorber thickness
+                     3*mm,                                               // gap thickness
+                     218*cm,                                             // start radius
+                     6.8*m,                                              // Z
+                     G4ThreeVector(0,0,0),
+                     deadMaterialBeforeHCal );
+    
+    
+
     
 }
