@@ -427,7 +427,7 @@ void DetectorScintiConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
         G4VSolid* layerS = new G4Tubs(name+"_Layer",                         // its name
                                       calorRmin + layer*layerThickness,      // R min 1700mm
                                       calorRmin + (layer+1)*layerThickness,  // R max 48cm + 1700mm
-                                      calorZ/2                               // Z max, +250 cm
+                                      calorZ/2,                              // Z max, +250 cm
                                       0*deg,                                 // phi min
                                       360*deg );                             // phi max
         
@@ -449,7 +449,7 @@ void DetectorScintiConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
         G4VSolid* absorverS = new G4Tubs( name+"_Abso",
                                     calorRmin + layer*(absoThickness + gapThickness),                  // R min 1700mm
                                     calorRmin + layer*(absoThickness + gapThickness) + absoThickness,  // R max 48cm + 1700mm
-                                                calorZ/2                                               // Z max, +250 cm
+                                                calorZ/2,                                              // Z max, +250 cm
                                                 0*deg,                                                 // phi min
                                                 360*deg );                                             // phi max
         
