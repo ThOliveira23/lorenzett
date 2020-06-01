@@ -93,8 +93,37 @@ void DetectorScintiConstruction::DefineMaterials()
     
     // Print Materials
     G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+}
+
+G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
+{
     
+    // Get materials
+    G4Material* defaultMaterial = G4Material::GetMaterial("Galactic");
+    
+    
+    // Defining the world
+    G4VSolid* worldS = new G4Tubs( "World",       // its name
+                                    0,            // R min
+                                    5000*cm,      // R max
+                                    10000*cm,     // Z max
+                                    0*deg,        // phi_min
+                                    360*deg);     // phi_max
+    
+    G4LogicalVolume* worldLV = new G4LogicalVolume(
+                                   worldS,              // its solid
+                                   defaultMaterial,     // its material
+                                   "World");            // its name
+    
+    G4VPhysicalVolume* worldPV = new G4PVPlacement(
+                   0,                 // no rotation
+                   G4ThreeVector(),   // at (0,0,0)
+                   worldLV,           // its logical volume
+                   "World",           // its name
+                   0,                 // its mother
+                   false,             // no boolean operation
+                   0,                 // copy number
+                   m_checkOverlaps);  // checking overlaps
     
     
 }
-
