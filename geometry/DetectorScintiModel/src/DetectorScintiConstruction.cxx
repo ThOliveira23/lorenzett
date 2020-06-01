@@ -234,7 +234,135 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
                      G4ThreeVector(0,0,0),
                      deadMaterialBeforeHCal );
     
+    CreateBarrel( worldLV,
+                  "HAD1",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  4,                                                  // layers
+                  6.0*cm,                                             // absorber thickness
+                  4.0*cm,                                             // gap thickness
+                  228*cm,                                             // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  had1 );
     
-
+    CreateBarrel( worldLV,
+                  "HAD2",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  11,                                                 // layers
+                  6.2*cm,                                             // absorber thickness
+                  3.8*cm,                                             // gap thickness
+                  228*cm + 40*cm,                                     // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  had2 );
+    
+    CreateBarrel( worldLV,
+                  "HAD3",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  5,                                                  // layers
+                  6.2*cm,                                             // absorber thickness
+                  3.8*cm,                                             // gap thickness
+                  228*cm + 40*cm + 110*cm,                            // start radius
+                  6.8*m,                                              // Z
+                  G4ThreeVector(0,0,0),
+                  had3 );
+    
+    // Construction of the Extended Barrel
+    const auto extended_barrel_size = 2.83*m;
+    const auto extended_barrel_pos = 5.495*m;
+    
+    // Extended to the right side
+    CreateBarrel( worldLV,
+                  "HAD1_Extended",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  4,                                                  // layers
+                  6.0*cm,                                             // absorber thickness
+                  4.0*cm,                                             // gap thickness
+                  228*cm,                                             // start radius
+                  extended_barrel_size,                               // Z
+                  G4ThreeVector(0,0,extended_barrel_pos),
+                  had1 );
+    
+    CreateBarrel( worldLV,
+                  "HAD2_Extended",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  11,                                                 // layers
+                  6.2*cm,                                             // absorber thickness
+                  3.8*cm,                                             // gap thickness
+                  228*cm + 40*cm,                                     // start radius
+                  extended_barrel_size,                               // Z
+                  G4ThreeVector(0,0,extended_barrel_pos),
+                  had2 );
+    
+    CreateBarrel( worldLV,
+                  "HAD3_Extended",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  5,                                                  // layers
+                  6.2*cm,                                             // absorber thickness
+                  3.8*cm,                                             // gap thickness
+                  228*cm + 40*cm + 110*cm,                            // start radius
+                  extended_barrel_size,                               // Z
+                  G4ThreeVector(0,0,extended_barrel_pos),
+                  had3 );
+    
+    // Extended to the left side
+    CreateBarrel( worldLV,
+                  "HAD1_Extended",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  4,                                                  // layers
+                  6.0*cm,                                             // absorber thickness
+                  4.0*cm,                                             // gap thickness
+                  228*cm,                                             // start radius
+                  extended_barrel_size,                               // Z
+                  G4ThreeVector(0,0,-extended_barrel_pos),
+                  had1 );
+    
+    CreateBarrel( worldLV,
+                  "HAD2_Extended",
+                  G4Material::GetMaterial("Galactic"),                // default material
+                  G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                  G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                  11,                                                 // layers
+                  6.2*cm,                                             // absorber thickness
+                  3.8*cm,                                             // gap thickness
+                  228*cm + 40*cm,                                     // start radius
+                  extended_barrel_size,                               // Z
+                  G4ThreeVector(0,0,-extended_barrel_pos),
+                  had2 );
+    
+    CreateBarrel( worldLV,
+                    "HAD3_Extended",
+                    G4Material::GetMaterial("Galactic"),                // default material
+                    G4Material::GetMaterial("G4_Fe"),                   // default absorber
+                    G4Material::GetMaterial("PLASTIC SCINTILLATOR"),    // gap material
+                    5,                                                  // layers
+                    6.2*cm,                                             // absorber thickness
+                    3.8*cm,                                             // gap thickness
+                    228*cm + 40*cm + 110*cm,                            // start radius
+                    extended_barrel_size,                               // Z
+                    G4ThreeVector(0,0,-extended_barrel_pos),
+                    had3 );
+    
+    return worldPV;
+    
+}
+    
+    
+    
+  
     
 }
