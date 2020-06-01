@@ -144,5 +144,21 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
                   deadMatBeforeCal );
     
     
+    // Creating the Pre-Sampler Calorimeter
+    G4Region* presampler = new G4Region("PS");
+    
+    CreateBarrel( worldLV,
+                  "PS",
+                  G4Material::GetMaterial("Galactic"),      // default material
+                  G4Material::GetMaterial("Galactic"),      // default absorber
+                  G4Material::GetMaterial("liquidArgon"),   // gap material
+                  1,                                        // layers
+                  0.01*mm,                                  // absorber thickness
+                  1.1*cm,                                   // gap thickness
+                  146..*cm,                                 // start radius
+                  6.8*m,                                    // Z
+                  G4ThreeVector(0,0,0),
+                  presampler );
+    
     
 }
