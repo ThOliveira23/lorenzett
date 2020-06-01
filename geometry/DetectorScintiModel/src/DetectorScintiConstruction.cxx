@@ -132,7 +132,7 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
     G4Region* em1 = new G4Region("EM1");
     G4Region* em2 = new G4Region("EM2");
     G4Region* em3 = new G4Region("EM3");
-    G4Region* deadMatBeforeHCal = new G4Region("DeadMatBeforeHCal");
+    G4Region* deadMaterialBeforeHCal = new G4Region("DeadMaterialBeforeHCal");
     G4Region* had1 = new G4Region("HAD1");
     G4Region* had2 = new G4Region("HAD2");
     G4Region* had3 = new G4Region("HAD3");
