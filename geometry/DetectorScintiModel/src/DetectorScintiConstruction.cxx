@@ -360,6 +360,18 @@ G4VPhysicalVolume* DetectorScintiConstruction::DefineVolumes()
     return worldPV;
     
 }
+
+void DetectorScintiConstruction::ConstructSDandField()
+{
+    // Dedicated to the creation of the magnetic field
+    // Create gloval magnetic field messenger
+    // The uniform magnetic field is created automatically if the field value is not zero
+    G4ThreeVector fieldValue = G4ThreeVector(0.,0.,0.);
+    //G4ThreeVector fieldValue = G4ThreeVector(0.,0.,2.0*tesla); If you want B different of zero
+    m_magFieldMessenger = new G4GlobalMagFieldMessenger(fieldValue);
+    m_magFieldMessenger->SetVerboseLevel(1);
+    
+}
     
     
     
