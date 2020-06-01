@@ -374,7 +374,7 @@ void DetectorScintiConstruction::ConstructSDandField()
 }
     
 
-void DetectorGenericConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
+void DetectorScintiConstruction::CreateBarrel(  G4LogicalVolume *worldLV,
                                                  std::string name,
                                                  G4Material *defaultMaterial,
                                                  G4Material *absorberMaterial,
