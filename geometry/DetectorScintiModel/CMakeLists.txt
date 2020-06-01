@@ -10,7 +10,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../core/G4Kernel)
 
 ROOT_GENERATE_DICTIONARY(DetectorScintiModelDict ${HEADERS} LINKDEF ${CMAKE_CURRENT_SOURCE_DIR}/src/LinkDef.h  MODULE DetectorScintiModel)
                                       
-add_library(DetectorGenericModel  OBJECT ${SOURCES} DetectorScintiModelDict.cxx)
+add_library(DetectorScintiModel  OBJECT ${SOURCES} DetectorScintiModelDict.cxx)
 install(FILES ${HEADERS}  DESTINATION DetectorScintiModel)
 
 
