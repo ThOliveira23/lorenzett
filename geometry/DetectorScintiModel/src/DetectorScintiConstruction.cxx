@@ -28,10 +28,10 @@ G4GlobalMagFieldMessenger* DetectorScintiConstruction::m_magFieldMessenger = 0;
 DetectorScintiConstruction::DetectorScintiConstruction(std::string name)
   :
    IMsgService(name),
-    G4UserDetectorConstruction(),
+    G4VUserDetectorConstruction(),
     m_checkOverlaps(true)
  {
-     MSG_INFO( "DetectorConstruction was created" );
+    MSG_INFO( "DetectorConstruction was created" );
  }
 
 DetectorScintiConstruction::~DetectorScintiConstruction()
@@ -92,7 +92,7 @@ void DetectorScintiConstruction::DefineMaterials()
     new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
     
     // Print Materials
-    G4Cout << *(G4Material::GetMaterialTable()) << endl;
+    G4Cout << *(G4Material::GetMaterialTable()) << G4endl;
     
     
     
