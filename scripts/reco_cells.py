@@ -61,11 +61,11 @@ from DetectorScintiModel import DetectorConstruction as Scinti
 from DetectorScintiModel import CaloCellBuilder
 
 
-#acc = ComponentAccumulator("ComponentAccumulator",
-#                            ATLAS("GenericATLASDetector"),
-#                            RunVis=args.visualization,
-#                            NumberOfThreads = args.numberOfThreads,
-#                            OutputFile = args.outputFile)
+acc = ComponentAccumulator("ComponentAccumulator",
+                            ATLAS("GenericATLASDetector"),
+                            RunVis=args.visualization,
+                            NumberOfThreads = args.numberOfThreads,
+                            OutputFile = args.outputFile)
                             
 #acc = ComponentAccumulator("ComponentAccumulator",
 #                            Generic("GenericDetector"),
@@ -73,11 +73,11 @@ from DetectorScintiModel import CaloCellBuilder
 #                            NumberOfThreads = args.numberOfThreads,
 #                            OutputFile = args.outputFile)
 
-acc = ComponentAccumulator("ComponentAccumulator",
-                            Scinti("ScintiDetector"),
-                            RunVis=args.visualization,
-                            NumberOfThreads = args.numberOfThreads,
-                            OutputFile = args.outputFile)
+#acc = ComponentAccumulator("ComponentAccumulator",
+#                            Scinti("ScintiDetector"),
+#                            RunVis=args.visualization,
+#                            NumberOfThreads = args.numberOfThreads,
+#                            OutputFile = args.outputFile)
 
 
 gun = EventReader( "PythiaGenerator",
