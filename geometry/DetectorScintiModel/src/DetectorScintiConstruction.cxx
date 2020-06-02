@@ -75,7 +75,7 @@ void DetectorScintiConstruction::DefineMaterials()
     scinti->AddElement(elH, 0.085);
     scinti->AddElement(elC, 0.915);
     
-    // Stainless Steel
+    // Stainless Steel (Medical Physics, Vol 25, No 10, Oct 1998)
     G4Material* steel = new G4Material("Stainless Steel", 8.02*g/cm3, 5);
     steel->AddElement(elMn, 0.02);
     steel->AddElement(elSi, 0.01);
