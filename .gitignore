@@ -8,7 +8,6 @@ doc/.ipynb_checkpoints/*
 *.gz
 *.npz
 *.root
-*.log
 *.pdf
 *.eps
 *.pdf
