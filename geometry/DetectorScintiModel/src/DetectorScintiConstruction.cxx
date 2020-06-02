@@ -31,7 +31,7 @@ DetectorScintiConstruction::DetectorScintiConstruction(std::string name)
     G4VUserDetectorConstruction(),
     m_checkOverlaps(true)
  {
-    MSG_INFO( "DetectorConstruction was created" );
+    MSG_INFO( "ScintillatorDetectorConstruction was created" );
  }
 
 DetectorScintiConstruction::~DetectorScintiConstruction()

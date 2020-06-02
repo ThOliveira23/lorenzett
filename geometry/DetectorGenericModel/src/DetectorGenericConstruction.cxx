@@ -35,7 +35,7 @@ DetectorGenericConstruction::DetectorGenericConstruction(std::string name)
    G4VUserDetectorConstruction(),
    m_checkOverlaps(true)
 {
-  MSG_INFO( "DetectorContruction was created" );
+  MSG_INFO( "GenericDetectorContruction was created" );
 }
 
 
