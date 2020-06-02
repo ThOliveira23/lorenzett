@@ -67,17 +67,17 @@ from DetectorScintiModel import CaloCellBuilder
 #                            NumberOfThreads = args.numberOfThreads,
 #                            OutputFile = args.outputFile)
                             
-acc = ComponentAccumulator("ComponentAccumulator",
-                            Generic("GenericDetector"),
-                            RunVis=args.visualization,
-                            NumberOfThreads = args.numberOfThreads,
-                            OutputFile = args.outputFile)
-
 #acc = ComponentAccumulator("ComponentAccumulator",
-#                            Scinti("ScintiDetector"),
+#                            Generic("GenericDetector"),
 #                            RunVis=args.visualization,
 #                            NumberOfThreads = args.numberOfThreads,
 #                            OutputFile = args.outputFile)
+
+acc = ComponentAccumulator("ComponentAccumulator",
+                            Scinti("ScintiDetector"),
+                            RunVis=args.visualization,
+                            NumberOfThreads = args.numberOfThreads,
+                            OutputFile = args.outputFile)
 
 
 gun = EventReader( "PythiaGenerator",
@@ -86,7 +86,7 @@ gun = EventReader( "PythiaGenerator",
 
 
 
-calorimeter = CaloCellBuilder("CaloCellScintiBuilder",
+calorimeter = CaloCellBuilder("CaloCellATLASBuilder",
                               HistogramPath = "Expert/CaloCells",
                               OutputLevel   = args.outputLevel)
 
