@@ -15,8 +15,8 @@ class DetectorConstruction(Logger):
     Logger.__init__(self)
     import ROOT
     ROOT.gSystem.Load('liblorenzett')
-    from ROOT import RunManager, DetectorGenericConstruction
-    self.__core = DetectorGenericConstruction(name)
+    from ROOT import RunManager, DetectorScintiConstruction
+    self.__core = DetectorScintiConstruction(name)
     for key, value in kw.items():
       self.setProperty( key, value )
 
