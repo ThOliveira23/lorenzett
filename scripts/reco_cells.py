@@ -61,17 +61,17 @@ from DetectorScintiModel import DetectorConstruction as Scinti
 from DetectorScintiModel import CaloCellBuilder
 
 
-acc = ComponentAccumulator("ComponentAccumulator",
-                            ATLAS("GenericATLASDetector"),
-                            RunVis=args.visualization,
-                            NumberOfThreads = args.numberOfThreads,
-                            OutputFile = args.outputFile)
-                            
 #acc = ComponentAccumulator("ComponentAccumulator",
-#                            Generic("GenericDetector"),
+#                            ATLAS("GenericATLASDetector"),
 #                            RunVis=args.visualization,
 #                            NumberOfThreads = args.numberOfThreads,
 #                            OutputFile = args.outputFile)
+                            
+acc = ComponentAccumulator("ComponentAccumulator",
+                            Generic("GenericDetector"),
+                            RunVis=args.visualization,
+                            NumberOfThreads = args.numberOfThreads,
+                            OutputFile = args.outputFile)
 
 #acc = ComponentAccumulator("ComponentAccumulator",
 #                            Scinti("ScintiDetector"),
