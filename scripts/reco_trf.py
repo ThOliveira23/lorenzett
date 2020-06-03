@@ -36,7 +36,7 @@ parser.add_argument('--evt','--numberOfEvents', action='store', dest='numberOfEv
 parser.add_argument('--visualization', action='store_true', dest='visualization', required = False,
                     help = "Run with Qt interface.")
                     
-parser.add_argument('--cal','--calorimeter', action='store', dest='Calorimeter', required = True,
+parser.add_argument('--cal','--calorimeter', action='store', dest='Calorimeter', required = False,
                     help = "Choose the calorimeter")
 
 if len(sys.argv)==1:
@@ -57,7 +57,7 @@ for thread in range( args.numberOfThreads ):
 
 
 
-if args.cal == "ATLAS":
+if args.Calorimeter == "ATLAS":
   from DetectorATLASModel import DetectorConstruction as ATLAS
   from DetectorATLASModel import CaloCellBuilder
   
@@ -67,7 +67,7 @@ acc = ComponentAccumulator("ComponentAccumulator",
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
 
-elif args.cal == "Generic":
+elif args.Calorimeter == "Generic":
   from DetectorGenericModel import DetectorConstruction as Generic
   from DetectorGenericModel import CaloCellBuilder
   
@@ -77,7 +77,7 @@ acc = ComponentAccumulator("ComponentAccumulator",
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
                             
-elif args.cal == "Scintillator":
+elif args.Calorimeter == "Scintillator":
   from DetectorScintiModel import DetectorConstruction as Scinti
   from DetectorScintiModel import CaloCellBuilder
 
