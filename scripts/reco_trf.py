@@ -35,6 +35,9 @@ parser.add_argument('--evt','--numberOfEvents', action='store', dest='numberOfEv
 
 parser.add_argument('--visualization', action='store_true', dest='visualization', required = False,
                     help = "Run with Qt interface.")
+                    
+parser.add_argument('--cal', action='store_true', dest='Calorimeter', required = True,
+                    help = "Choose the calorimeter")
 
 if len(sys.argv)==1:
   parser.print_help()
@@ -54,29 +57,32 @@ for thread in range( args.numberOfThreads ):
 
 
 
-from DetectorATLASModel import DetectorConstruction as ATLAS
-from DetectorATLASModel import CaloCellBuilder
+if args.cal == "ATLAS":
+  from DetectorATLASModel import DetectorConstruction as ATLAS
+  from DetectorATLASModel import CaloCellBuilder
+  
+acc = ComponentAccumulator("ComponentAccumulator",
+                            ATLAS("GenericATLASDetector"),
+                            RunVis=args.visualization,
+                            NumberOfThreads = args.numberOfThreads,
+                            OutputFile = args.outputFile)
 
-from DetectorGenericModel import DetectorConstruction as Generic
-from DetectorGenericModel import CaloCellBuilder
-
-from DetectorScintiModel import DetectorConstruction as Scinti
-from DetectorScintiModel import CaloCellBuilder
-
-
-
-#acc = ComponentAccumulator("ComponentAccumulator",
-#                            ATLAS("GenericATLASDetector"),
-#                            RunVis=args.visualization,
-#                            NumberOfThreads = args.numberOfThreads,
-#                            OutputFile = args.outputFile)
+elif args.cal == "Generic":
+  from DetectorGenericModel import DetectorConstruction as Generic
+  from DetectorGenericModel import CaloCellBuilder
+  
+acc = ComponentAccumulator("ComponentAccumulator",
+                            ATLAS("GenericATLASDetector"),
+                            RunVis=args.visualization,
+                            NumberOfThreads = args.numberOfThreads,
+                            OutputFile = args.outputFile)
                             
-#acc = ComponentAccumulator("ComponentAccumulator",
-#                            Generic("GenericDetector"),
-#                            RunVis=args.visualization,
-#                            NumberOfThreads = args.numberOfThreads,
-#                            OutputFile = args.outputFile)
-                            
+elif args.cal == "Scintillator":
+  from DetectorScintiModel import DetectorConstruction as Scinti
+  from DetectorScintiModel import CaloCellBuilder
+
+
+
 acc = ComponentAccumulator("ComponentAccumulator",
                             Scinti("ScintiDetector"),
                             RunVis=args.visualization,
