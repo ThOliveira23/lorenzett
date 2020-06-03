@@ -36,7 +36,7 @@ parser.add_argument('--evt','--numberOfEvents', action='store', dest='numberOfEv
 parser.add_argument('--visualization', action='store_true', dest='visualization', required = False,
                     help = "Run with Qt interface.")
                     
-parser.add_argument('--cal', action='store_true', dest='Calorimeter', required = True,
+parser.add_argument('--cal','--calorimeter', action='store', dest='Calorimeter', required = True,
                     help = "Choose the calorimeter")
 
 if len(sys.argv)==1:
