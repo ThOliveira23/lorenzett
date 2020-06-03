@@ -53,35 +53,41 @@ for thread in range( args.numberOfThreads ):
   outputFileList.append( args.outputFile.replace( '.root', "_%d.root"%thread ) )
 
 
+from DetectorATLASModel import DetectorConstruction as ATLAS
+from DetectorGenericModel import DetectorConstruction as Generic
+from DetectorScintiModel import DetectorConstruction as Scinti
+
+
 if args.Calorimeter == "ATLAS":
-  from DetectorATLASModel import DetectorConstruction as ATLAS
+  
   from DetectorATLASModel import CaloCellBuilder
   
-acc = ComponentAccumulator("ComponentAccumulator",
+  acc = ComponentAccumulator("ComponentAccumulator",
                             ATLAS("GenericATLASDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
 
 if args.Calorimeter == "Generic":
-  from DetectorGenericModel import DetectorConstruction as Generic
+
   from DetectorGenericModel import CaloCellBuilder
   
-acc = ComponentAccumulator("ComponentAccumulator",
-                            ATLAS("GenericATLASDetector"),
+  acc = ComponentAccumulator("ComponentAccumulator",
+                            Generic("GenericATLASDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
                             
 if args.Calorimeter == "Scintillator":
-  from DetectorScintiModel import DetectorConstruction as Scinti
+
   from DetectorScintiModel import CaloCellBuilder
 
-acc = ComponentAccumulator("ComponentAccumulator",
+  acc = ComponentAccumulator("ComponentAccumulator",
                             Scinti("ScintiDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
+
 
 
 

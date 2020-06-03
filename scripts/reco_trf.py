@@ -57,34 +57,35 @@ for thread in range( args.numberOfThreads ):
 
 
 from DetectorATLASModel import DetectorConstruction as ATLAS
-from DetectorATLASModel import CaloCellBuilder
-
 from DetectorGenericModel import DetectorConstruction as Generic
-from DetectorGenericModel import CaloCellBuilder
-
 from DetectorScintiModel import DetectorConstruction as Scinti
-from DetectorScintiModel import CaloCellBuilder
+
 
 if args.Calorimeter == "ATLAS":
-
   
-acc = ComponentAccumulator("ComponentAccumulator",
+  from DetectorATLASModel import CaloCellBuilder
+  
+  acc = ComponentAccumulator("ComponentAccumulator",
                             ATLAS("GenericATLASDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
 
 if args.Calorimeter == "Generic":
+
+  from DetectorGenericModel import CaloCellBuilder
   
-acc = ComponentAccumulator("ComponentAccumulator",
-                            ATLAS("GenericATLASDetector"),
+  acc = ComponentAccumulator("ComponentAccumulator",
+                            Generic("GenericATLASDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
                             
 if args.Calorimeter == "Scintillator":
 
-acc = ComponentAccumulator("ComponentAccumulator",
+  from DetectorScintiModel import CaloCellBuilder
+
+  acc = ComponentAccumulator("ComponentAccumulator",
                             Scinti("ScintiDetector"),
                             RunVis=args.visualization,
                             NumberOfThreads = args.numberOfThreads,
