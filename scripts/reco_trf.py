@@ -44,7 +44,7 @@ if len(sys.argv)==1:
   sys.exit(1)
 
 args = parser.parse_args()
-
+print (args)
 
 # Get all output names
 if not '.root' in args.outputFile:
@@ -56,10 +56,17 @@ for thread in range( args.numberOfThreads ):
   outputFileList.append( args.outputFile.replace( '.root', "_%d.root"%thread ) )
 
 
+from DetectorATLASModel import DetectorConstruction as ATLAS
+from DetectorATLASModel import CaloCellBuilder
+
+from DetectorGenericModel import DetectorConstruction as Generic
+from DetectorGenericModel import CaloCellBuilder
+
+from DetectorScintiModel import DetectorConstruction as Scinti
+from DetectorScintiModel import CaloCellBuilder
 
 if args.Calorimeter == "ATLAS":
-  from DetectorATLASModel import DetectorConstruction as ATLAS
-  from DetectorATLASModel import CaloCellBuilder
+
   
 acc = ComponentAccumulator("ComponentAccumulator",
                             ATLAS("GenericATLASDetector"),
@@ -67,9 +74,7 @@ acc = ComponentAccumulator("ComponentAccumulator",
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
 
-elif args.Calorimeter == "Generic":
-  from DetectorGenericModel import DetectorConstruction as Generic
-  from DetectorGenericModel import CaloCellBuilder
+if args.Calorimeter == "Generic":
   
 acc = ComponentAccumulator("ComponentAccumulator",
                             ATLAS("GenericATLASDetector"),
@@ -77,11 +82,7 @@ acc = ComponentAccumulator("ComponentAccumulator",
                             NumberOfThreads = args.numberOfThreads,
                             OutputFile = args.outputFile)
                             
-elif args.Calorimeter == "Scintillator":
-  from DetectorScintiModel import DetectorConstruction as Scinti
-  from DetectorScintiModel import CaloCellBuilder
-
-
+if args.Calorimeter == "Scintillator":
 
 acc = ComponentAccumulator("ComponentAccumulator",
                             Scinti("ScintiDetector"),
