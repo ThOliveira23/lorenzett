@@ -8,9 +8,7 @@ doc/.ipynb_checkpoints/*
 *.gz
 *.npz
 *.root
-*.pdf
 *.eps
-*.pdf
 *.tex
 *.C
 cmt/boost_test.cxx.o
