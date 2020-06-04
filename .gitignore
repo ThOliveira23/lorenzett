@@ -4,6 +4,7 @@ cmt/new_env_file.sh
 .ipynb_checkpoints/*
 doc/.ipynb_checkpoints/*
 *.mat
+*.pages
 *.pic
 *.gz
 *.npz
