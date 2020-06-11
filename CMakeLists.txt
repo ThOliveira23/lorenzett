@@ -72,6 +72,7 @@ add_subdirectory( generator/PythiaGenerator )
 add_subdirectory( geometry/DetectorATLASModel )
 add_subdirectory( geometry/DetectorGenericModel )
 add_subdirectory( geometry/DetectorScintiModel )
+add_subdirectory( geometry/DetectorAPModel )
 
 add_library(lorenzett SHARED
   $<TARGET_OBJECTS:GaugiKernel>
@@ -88,6 +89,7 @@ add_library(lorenzett SHARED
   $<TARGET_OBJECTS:DetectorATLASModel>
   $<TARGET_OBJECTS:DetectorGenericModel>
   $<TARGET_OBJECTS:DetectorScintiModel>
+  $<TARGET_OBJECTS:DetectorAPModel>
 )
 
 message( STATUS ${FASTJET_LIBRARIES} )
